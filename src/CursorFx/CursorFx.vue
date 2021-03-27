@@ -154,6 +154,7 @@
                 handler: 'refresh',
                 deep: true,
             },
+            '$route.path': 'initEvents',
         },
         created() {
 
@@ -228,7 +229,7 @@
                 // Custom cursor changes state when hovering on elements with 'data-hover'.
                 [
                     ... document.querySelectorAll(
-                        '[data-cursor-hover]',
+                        '[data-cursor-hover]:not(.c-fx)',
                     ),
                 ].forEach(
                     link => {
@@ -249,12 +250,16 @@
                             false,
                         );
 
+                        link.classList.add(
+                            'c-fx'
+                        );
+
                     },
                 );
 
                 [
                     ... document.querySelectorAll(
-                        '[data-cursor-hidden]',
+                        '[data-cursor-hidden]:not(.c-fx)',
                     ),
                 ].forEach(
                     link => {
@@ -275,7 +280,7 @@
 
                 [
                     ... document.querySelectorAll(
-                        '[data-cursor-mix-blend-mode]',
+                        '[data-cursor-mix-blend-mode]:not(.c-fx)',
                     ),
                 ].forEach(
                     link => {
